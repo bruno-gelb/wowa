@@ -1,4 +1,5 @@
 import os
+import pathlib
 import urllib
 import zipfile
 from typing import Union, Tuple
@@ -6,7 +7,7 @@ from typing import Union, Tuple
 import yaml
 
 from core.index import index
-from core.utils import autodiscover_wow_addon_directory, autodiscover_wow_version, get_path_to_config
+from core.utils import autodiscover_wow_addon_directory, autodiscover_wow_version, get_path_to_metadata
 
 
 def install(name: str, version: str) -> None:
@@ -14,13 +15,18 @@ def install(name: str, version: str) -> None:
 
     if found:
         installed_name = found['name']
+        # todo check if it's already installed
         resolved = resolve(found)
         if resolved:
             installed_version, url = resolved
             if url:
                 downloaded = download(url)
-                unpack(downloaded)
-                remember(installed_name, f'=={installed_version}')
+                installed_dirs = unpack(downloaded)
+                store_install_metadata(
+                    installed_name,
+                    f'=={installed_version}',
+                    installed_dirs
+                )
                 print(f'Successfully installed {installed_name}=={installed_version}. ')
 
 
@@ -54,23 +60,33 @@ def download(addon_download_link: str) -> str:
     return file_path
 
 
-def unpack(path: str) -> None:
+def unpack(path: str) -> list:
     addons_dir = autodiscover_wow_addon_directory()
     print(f'Unpacking {path} to {addons_dir} ..')
 
+    unpacked_dirs = []
     with zipfile.ZipFile(path, 'r') as zip_ref:
+        for path in zip_ref.namelist():
+            p = pathlib.Path(path)
+            unpacked_dirs.append(p.parts[0])
+        unpacked_dirs = list(set(unpacked_dirs))
         zip_ref.extractall(addons_dir)
 
     print(f'Done.')
+    return unpacked_dirs
 
 
-def remember(name: str, version: str) -> None:
-    config = get_path_to_config()
+def store_install_metadata(name: str, version: str, dirs: list) -> None:
+    metadata = get_path_to_metadata()
 
-    data = {name: {'version': version}}
-    if os.path.exists(config):
-        with open(config, 'r') as f:
-            data.update(yaml.load(f))
+    data = {name: {
+        'version': version,
+        'dirs': dirs,
+        'state': None  # todo: 'alpha', 'beta', 'release'
+    }}
+    if os.path.exists(metadata):
+        with open(metadata, 'r') as f:
+            data.update(yaml.load(f, Loader=yaml.FullLoader))
 
-    with open(config, 'w') as f:
+    with open(metadata, 'w') as f:
         yaml.dump(data, f, default_flow_style=False)

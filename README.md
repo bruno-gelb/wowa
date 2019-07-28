@@ -20,7 +20,7 @@ wowa.py install recount==8.2
 ```
 wowa.py install -y addons.yaml
 ```
-**TBI** Uninstall addon:
+Uninstall addon:
 ```
 wowa.py uninstall recount
 ```

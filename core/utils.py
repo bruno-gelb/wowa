@@ -22,6 +22,6 @@ def autodiscover_wow_addon_directory() -> str:
     return r'C:\Program Files (x86)\World of Warcraft\_retail_\Interface\AddOns'
 
 
-def get_path_to_config() -> str:
+def get_path_to_metadata() -> str:
     wow_addon_directory = autodiscover_wow_addon_directory()
-    return os.path.join(wow_addon_directory, 'wowa.yaml')
+    return os.path.join(wow_addon_directory, 'wowa_metadata.yaml')

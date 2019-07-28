@@ -2,16 +2,16 @@ import os
 
 import yaml
 
-from core.utils import get_path_to_config
+from core.utils import get_path_to_metadata
 
 
 def list_installed() -> None:
-    config = get_path_to_config()
+    metadata = get_path_to_metadata()
 
-    if not os.path.exists(config):
+    if not os.path.exists(metadata):
         return
 
-    with open(config, 'r') as f:
+    with open(metadata, 'r') as f:
         for name, v in yaml.load(f, Loader=yaml.FullLoader).items():
             version = v['version']
             print(f'{name}{version}')
