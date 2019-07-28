@@ -41,10 +41,10 @@ wowa.py --version  # show addon manager version
 
 |project|language|github stars|commits|last commit|forks|how exactly wowa is better|
 | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
-| [kuhnertdm/wow-addon-updater](https://github.com/kuhnertdm/wow-addon-updater) | Python | 116 | 123 | 11 months ago | 38 | No ready-to-use binary provided for the end users. The tool can serve only as an updater (no other addon managment), and the user has to manually search for http links and form the file (usability issues).  |
+| [kuhnertdm/wow-addon-updater](https://github.com/kuhnertdm/wow-addon-updater) | Python | 116 | 123 | 11 months ago | 38 | No ready-to-use binary provided for the end users. The tool can serve only as an updater (no other addon management), and the user has to manually search for http links and form the file (usability issues).  |
 | [zekesonxx/wow-cli](https://github.com/zekesonxx/wow-cli) | JavaScript | 12 | 26 | 4 years ago | 4 | Even the latest fork was dropped 2 years ago. Interface is lacking consistency and features. No ready-to-use binary provided for the end users. |
 | [wttw/wowaddon](https://github.com/wttw/wowaddon) | Go | 5 | 39 | 2 years ago | 2 | No ready-to-use binary provided for the end users. Was not tested with real WoW installation. |
-| [acdtrx/wowam](https://github.com/acdtrx/wowam) | JavaScript | 1 | 21 | 3 years ago | None | No ready-to-use binary provided for the end users. Unsupported. Only couple of command implemented, no documentation or usability effot made. |
+| [acdtrx/wowam](https://github.com/acdtrx/wowam) | JavaScript | 1 | 21 | 3 years ago | None | No ready-to-use binary provided for the end users. Unsupported. Only couple of commands implemented, no documentation or usability effort made. |
 | [qwezarty/wow-addon-manager](https://github.com/qwezarty/wow-addon-manager) | Python | 0 | 38 | 5 months ago | None| Dropped at the early stage of development (according to readme). No ready-to-use binary provided for the end users. |
 
 ### contributing
