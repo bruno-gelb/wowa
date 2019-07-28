@@ -15,57 +15,20 @@ wowa = World of Warcraft console Addon manager
 * *(later to be supported)* OS X / Linux installation binaries
 ### usage
 
-Install addon:
 ```
-wowa.py install recount
-```
-Install addons in bulk:
-```
-wowa.py install recount tomtom auctioneer
-```
-**TBI** Install specific version of addon:
-```
-wowa.py install recount==8.2.0a
-```
-**TBI** Install addons from file:
-```
-wowa.py install -y addons.yaml
-```
-Uninstall addon:
-```
-wowa.py uninstall recount
-```
-Uninstall all addons:
-```
-wowa.py uninstall
-```
-List installed addons:
-```
-wowa.py list
-```
-**TBI** Search for available to install addon versions:
-```
-wowa.py search recount
-```
-**TBI** Show addon info (description, total downloads, ..):
-```
-wowa.py info recount
-```
-**TBI** Upgrade all addons:
-```
-wowa.py upgrade
-```
-**TBI** Upgrade specific addon:
-```
-wowa.py upgrade recount
-```
-Show all available commands of the addon manager:
-```
-wowa.py --help
-```
-Show addon manager version:
-```
-wowa.py --version
+wowa.py install recount  # install addon
+wowa.py install recount tomtom auctioneer  # install addons in bulk
+wowa.py install recount==8.2.0a  # install specific version of addon <to be implemented>
+wowa.py install -y addons.yaml  # install addons from file <to be implemented>
+wowa.py uninstall recount  # uninstall addon
+wowa.py uninstall  # uninstall all addons
+wowa.py list  # list installed addons
+wowa.py search recount  # search for available to install addon versions <to be implemented>
+wowa.py info recount  #  show addon info (description, total downloads, ..) <to be implemented>
+wowa.py upgrade  # upgrade all addons <to be implemented>
+wowa.py upgrade recount  # upgrade specific addon <to be implemented>
+wowa.py --help  # show all available commands of the addon manager
+wowa.py --version  # show addon manager version
 ```
 
 ### comparison to other WoW CLI addon tools
