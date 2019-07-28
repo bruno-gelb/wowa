@@ -14,4 +14,4 @@ def list_installed() -> None:
     with open(metadata, 'r') as f:
         for name, v in yaml.load(f, Loader=yaml.FullLoader).items():
             version = v['version']
-            print(f'{name}{version}')
+            print(f'{name}=={version}')
