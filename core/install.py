@@ -1,3 +1,6 @@
+import os
+import urllib
+import zipfile
 from typing import Union
 
 from core.index import index
@@ -36,14 +39,23 @@ def resolve(entry: dict) -> Union[str, None]:
 
 def download(addon_download_link: str) -> str:
     print(f'Downloading {addon_download_link} ..')
-    # todo download to %TEMP% dir, get the path
-    tmp_path = r'C:\tmp\addon.zip'
+
+    tmp_dir = os.path.join(os.environ['TEMP'], 'wowa')
+    if not os.path.exists(tmp_dir):
+        os.makedirs(tmp_dir)
+
+    archive_name = addon_download_link.split('/')[-1]
+    urllib.request.urlretrieve(addon_download_link,
+                               os.path.join(tmp_dir, archive_name))
     print(f'Done.')
-    return tmp_path
+    return os.path.join(tmp_dir, archive_name)
 
 
 def unpack(path: str) -> None:
     addons_dir = autodiscover_wow_addon_directory()
     print(f'Unpacking {path} to {addons_dir} ..')
-    # todo unpack
+
+    with zipfile.ZipFile(path, 'r') as zip_ref:
+        zip_ref.extractall(addons_dir)
+
     print(f'Done.')
