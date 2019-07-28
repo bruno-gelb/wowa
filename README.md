@@ -14,7 +14,7 @@ wowa.py install recount tomtom auctioneer
 ```
 **TBI** Install specific version of addon:
 ```
-wowa.py install recount==8.2
+wowa.py install recount==8.2.0a
 ```
 **TBI** Install addons from file:
 ```
