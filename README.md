@@ -31,6 +31,12 @@ wowa.py --help  # show all available commands of the addon manager
 wowa.py --version  # show addon manager version
 ```
 
+### why not use Twitch client / some other GUI client?
+
+1. True, Twitch client is popular, however, it's also slow and bloated with streaming, other games, chat, .. (sorry). This tool solves one and only one problem: to manage WoW addons. And does it well.
+1. Each popular GUI client (Twitch, WowMatrix, WoWInterface, Tukui) support only their own addons repository. This tool is intended to support all of them.
+1. CLI is quicker and more powerful of GUI by it's nature.
+
 ### comparison to other WoW CLI addon tools
 
 first of all, all these developers did fantastic job!
