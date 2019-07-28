@@ -2,6 +2,7 @@ import click
 
 from core.install import install
 from core.list_installed import list_installed
+from core.utils import parse_name_version
 
 
 @click.group()
@@ -14,9 +15,9 @@ def cli():
 @click.argument('addon_name')
 def install_command(addon_name):
     click.echo(f'Installing {addon_name} (latest) ..')
-    addon_version = '5.8.2'
-    install()
-    click.echo(f'Installed {addon_name}=={addon_version}.')
+    name, version = parse_name_version(addon_name)
+    installed_name, installed_version = install(name, version)
+    click.echo(f'Installed {installed_name}=={installed_version}. ')
 
 
 @cli.command(name='uninstall')
