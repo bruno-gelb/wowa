@@ -7,23 +7,38 @@ from typing import Union, Tuple
 import yaml
 
 from core.index import index
-from core.utils import autodiscover_wow_addon_directory, autodiscover_wow_version, get_path_to_metadata, \
-    AddonVersionState
+from core.utils import (autodiscover_wow_addon_directory,
+                        autodiscover_wow_version,
+                        get_metadata_path,
+                        AddonVersionState)
+
+
+def is_installed(name: str) -> bool:
+    metadata_path = get_metadata_path()
+    if os.path.exists(metadata_path):
+        with open(metadata_path, 'r') as f:
+            metadata = yaml.load(f, Loader=yaml.FullLoader)
+            if name.lower() in [n.lower() for n in metadata]:
+                return True
+    return False
 
 
 def install(name: str, version: str) -> None:
+    if is_installed(name):
+        print(f'{name} is already installed.')
+        return
+
     found = index.search(name, version)
 
     if found:
         installed_name = found['name']
-        # todo check if it's already installed
         resolved = resolve(found)
         if resolved:
             installed_version, installed_state, url = resolved
             if url:
                 downloaded = download(url)
                 installed_dirs = unpack(downloaded)
-                store_install_metadata(
+                update_metadata(
                     installed_name,
                     installed_version,
                     installed_dirs,
@@ -84,17 +99,18 @@ def unpack(path: str) -> list:
     return unpacked_dirs
 
 
-def store_install_metadata(name: str, version: str, dirs: list, state: AddonVersionState) -> None:
-    metadata = get_path_to_metadata()
+def update_metadata(name: str, version: str,
+                    dirs: list, state: AddonVersionState) -> None:
+    metadata_path = get_metadata_path()
 
-    data = {name: {
+    metadata = {name: {
         'version': f'{version}',
         'dirs': dirs,
         'state': str(state)
     }}
-    if os.path.exists(metadata):
-        with open(metadata, 'r') as f:
-            data.update(yaml.load(f, Loader=yaml.FullLoader))
+    if os.path.exists(metadata_path):
+        with open(metadata_path, 'r') as f:
+            metadata.update(yaml.load(f, Loader=yaml.FullLoader))
 
-    with open(metadata, 'w') as f:
-        yaml.dump(data, f, default_flow_style=False)
+    with open(metadata_path, 'w') as f:
+        yaml.dump(metadata, f, default_flow_style=False)
