@@ -1,5 +1,8 @@
 import click
 
+from core.install import install
+from core.list_installed import list_installed
+
 
 @click.group()
 @click.version_option()
@@ -7,48 +10,49 @@ def cli():
     pass
 
 
-@cli.command()
+@cli.command(name='install')
 @click.argument('addon_name')
-def install(addon_name):
+def install_command(addon_name):
     click.echo(f'Installing {addon_name} (latest) ..')
     addon_version = '5.8.2'
+    install()
     click.echo(f'Installed {addon_name}=={addon_version}.')
 
 
-@cli.command()
+@cli.command(name='uninstall')
 @click.argument('addon_name')
-def uninstall(addon_name):
+def uninstall_command(addon_name):
     click.echo(f'Uninstalling {addon_name} (latest) ..')
     addon_version = '5.8.2'
     click.echo(f'Uninstalled {addon_name}=={addon_version}.')
 
 
-@cli.command()
+@cli.command(name='upgrade')
 @click.argument('addon_name')
-def upgrade(addon_name):
+def upgrade_command(addon_name):
     click.echo(addon_name)
 
 
 @cli.command(name='list')
-def list_installed():
-    pass
+def list_command():
+    list_installed()
 
 
-@cli.command()
+@cli.command(name='version')
 @click.argument('addon_name')
-def version(addon_name):
+def version_command(addon_name):
     click.echo(addon_name)
 
 
-@cli.command()
+@cli.command(name='search')
 @click.argument('addon_name')
-def search(addon_name):
+def search_command(addon_name):
     click.echo(addon_name)
 
 
-@cli.command()
+@cli.command(name='info')
 @click.argument('addon_name')
-def info(addon_name):
+def info_command(addon_name):
     click.echo(addon_name)
 
 
