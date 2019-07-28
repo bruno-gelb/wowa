@@ -8,9 +8,8 @@ World of Warcraft console addon manager
 
 * install, uninstall, upgrade [Twitch (CurseForge) addons](https://www.curseforge.com/wow/addons) in bulk from command line or from file
 * lightweight and fast. Index and downloads are cached
-* well thought-out interface
+* well thought-out colorful interface
 * requires no authorization wheresoever
-* colorful output
 * *(soon to be supported)* WoW installation path and version autodetect
 * *(soon to be supported)* no installation required, just place the dir with `.exe` file in your PATH
 * *(soon to be supported)* multiple addon providers ([wowinterface.com](https://wowinterface.com), [wowmatrix.com](https://wowmatrix.com))

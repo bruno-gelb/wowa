@@ -1,4 +1,5 @@
 import click
+from tqdm import tqdm
 
 from core.install import install
 from core.list_installed import list_installed
@@ -18,7 +19,7 @@ def install_command(addon_names):
     if isinstance(addon_names, str):
         addon_names = [addon_names]
 
-    for addon_name in addon_names:
+    for addon_name in tqdm(addon_names):
         click.echo()
         click.echo('Installing ' + click.style(addon_name, fg='yellow') + ' (latest) ..')
         name, version = parse_name_version(addon_name)
@@ -32,7 +33,7 @@ def uninstall_command(addon_names):
         addon_names = [addon_names]
     if not addon_names:
         addon_names = list_installed()
-    for addon_name in addon_names:
+    for addon_name in tqdm(addon_names):
         click.echo('Uninstalling ' + click.style(addon_name, fg='yellow') + ' (latest) ..')
         uninstall(addon_name)
     click.echo(click.style('All uninstalled.', bold=True))
@@ -43,7 +44,7 @@ def uninstall_command(addon_names):
 def upgrade_command(addon_names):
     if isinstance(addon_names, str):
         addon_names = [addon_names]
-    for addon_name in addon_names:
+    for addon_name in tqdm(addon_names):
         click.echo(addon_name)
 
 
