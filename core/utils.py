@@ -1,4 +1,5 @@
 import os
+from enum import Enum
 
 
 def parse_name_version(raw: str) -> (str, str):
@@ -25,3 +26,9 @@ def autodiscover_wow_addon_directory() -> str:
 def get_path_to_metadata() -> str:
     wow_addon_directory = autodiscover_wow_addon_directory()
     return os.path.join(wow_addon_directory, 'wowa_metadata.yaml')
+
+
+class AddonVersionState(Enum):
+    ALPHA = 1
+    BETA = 2
+    RELEASE = 3
