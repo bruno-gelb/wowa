@@ -38,7 +38,7 @@ wowa.py installed recount
 ```
 Search for available to install addon versions:
 ```
-wowa.py search recount (вывести доступные в индексе версии аддона)
+wowa.py search recount
 ```
 Show addon info (description, total downloads, ..):
 ```
@@ -46,9 +46,9 @@ wowa.py info recount
 ```
 Show all available commands of the addon manager:
 ```
-wowa --help (вывести помощь)
+wowa.py --help
 ```
 Show addon manager version:
 ```
-wowa -v (вывести версию)
+wowa.py --version
 ```
