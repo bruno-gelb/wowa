@@ -13,24 +13,34 @@ def cli():
 
 
 @cli.command(name='install')
-@click.argument('addon_name')
-def install_command(addon_name):
-    click.echo(f'Installing {addon_name} (latest) ..')
-    name, version = parse_name_version(addon_name)
-    install(name, version)
+@click.argument('addon_names', nargs=-1)
+def install_command(addon_names):
+    if isinstance(addon_names, str):
+        addon_names = [addon_names]
+
+    for addon_name in addon_names:
+        click.echo(f'Installing {addon_name} (latest) ..')
+        name, version = parse_name_version(addon_name)
+        install(name, version)
 
 
 @cli.command(name='uninstall')
-@click.argument('addon_name')
-def uninstall_command(addon_name):
-    click.echo(f'Uninstalling {addon_name} (latest) ..')
-    uninstall(addon_name)
+@click.argument('addon_names', nargs=-1)
+def uninstall_command(addon_names):
+    if isinstance(addon_names, str):
+        addon_names = [addon_names]
+    for addon_name in addon_names:
+        click.echo(f'Uninstalling {addon_name} (latest) ..')
+        uninstall(addon_name)
 
 
 @cli.command(name='upgrade')
-@click.argument('addon_name')
-def upgrade_command(addon_name):
-    click.echo(addon_name)
+@click.argument('addon_names', nargs=-1, required=False)
+def upgrade_command(addon_names):
+    if isinstance(addon_names, str):
+        addon_names = [addon_names]
+    for addon_name in addon_names:
+        click.echo(addon_name)
 
 
 @cli.command(name='list')

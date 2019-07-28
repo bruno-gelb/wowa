@@ -8,7 +8,7 @@ Install addon:
 ```
 wowa.py install recount
 ```
-**TBI** Install addons in bulk:
+Install addons in bulk:
 ```
 wowa.py install recount tomtom auctioneer
 ```
