@@ -39,7 +39,6 @@ class Index(object):
 
         params = {
             'gameId': WOW_TWITCH_ID,
-            # 'gameVersion': WOW_VERSION,
             'pageSize': PAGE_SIZE,
             'sort': 0
         }

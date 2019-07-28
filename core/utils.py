@@ -1,4 +1,5 @@
 def parse_name_version(raw: str) -> (str, str):
+    # todo this should respect things like '<', '<=', etc.
     if '==' in raw:
         name, version = raw.split('==')
     else:
@@ -9,6 +10,7 @@ def parse_name_version(raw: str) -> (str, str):
 
 
 def autodiscover_wow_version() -> str:
+    # todo this should depend on wow version / os
     return '8.2.0'
 
 
