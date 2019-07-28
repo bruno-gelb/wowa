@@ -2,10 +2,9 @@
 
 wowa = World of Warcraft console Addon manager
 
-### features
-
 ![wowa](https://raw.githubusercontent.com/nazarov-tech/wowa/master/static/wowa_demo.gif)
 
+### features
 * install, uninstall, upgrade [Twitch (CurseForge) addons](https://www.curseforge.com/wow/addons) in bulk from command line or from file
 * lightweight and fast. Index and downloads are cached
 * well thought-out colorful interface
