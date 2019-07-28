@@ -1,6 +1,6 @@
 ### wowa
 
-World of Warcraft console addon manager
+wowa = World of Warcraft console Addon manager
 
 ### features
 
