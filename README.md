@@ -28,10 +28,6 @@ List installed addons:
 ```
 wowa.py list
 ```
-**TBI** Show specific installed addon:
-```
-wowa.py list recount
-```
 **TBI** Search for available to install addon versions:
 ```
 wowa.py search recount
