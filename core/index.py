@@ -87,13 +87,27 @@ class Index(object):
                 if name.lower() in entry['name'].lower():
                     close_matches.append(entry['name'])
             if close_matches:
-                click.echo(click.style('Maybe you meant one of these?', fg='green'))
-                styled_maches = [click.style('* ' + m, fg='yellow') for m in close_matches]
-                for m in styled_maches:
-                    click.echo(m)
+                styled_maches = [click.style(m, fg='yellow') for m in close_matches]
+                for i, m in enumerate(styled_maches):
+                    click.echo(f'[{i + 1}] {m}')
+                while True:
+                    choice = click.prompt(click.style('Enter the number', fg='green'))
+                    try:
+                        chosen_match = styled_maches[int(choice) - 1]
+                    except (ValueError, IndexError):
+                        pass
+                    else:
+                        if int(choice) < 1:
+                            continue
+                        break
+                click.echo(f'Ok, {chosen_match} it is.')
+                for entry in self.data['addons']:
+                    if close_matches[int(choice) - 1] == entry['name']:
+                        found = entry
             else:
                 click.echo(
-                    click.style('No close matches either. Please check the name of addon on the website?', fg='red'))
+                    click.style('No close matches either. Please check the name of addon on the website?',
+                                fg='red'))
 
         return found
 
