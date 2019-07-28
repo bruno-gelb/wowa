@@ -4,6 +4,7 @@ import urllib
 import zipfile
 from typing import Union, Tuple
 
+import click
 import yaml
 
 from core.index import index
@@ -25,7 +26,7 @@ def is_installed(name: str) -> bool:
 
 def install(name: str, version: str) -> None:
     if is_installed(name):
-        print(f'{name} is already installed.')
+        click.echo(f'{name} is already installed.')
         return
 
     found = index.search(name, version)
@@ -44,18 +45,18 @@ def install(name: str, version: str) -> None:
                     installed_dirs,
                     installed_state
                 )
-                print(f'Successfully installed {installed_name}=={installed_version}. ')
+                click.echo(click.style(f'Successfully installed {installed_name}=={installed_version}.', bold=True))
 
 
 def resolve(entry: dict) -> Union[Tuple[str, AddonVersionState, str], None]:
-    print('Resolving addon version to install ..')
+    click.echo('Resolving addon version to install ..')
 
     wow_version = autodiscover_wow_version()
-    print(f'Your WoW version is {wow_version}.')
+    click.echo(f'Your WoW version is {wow_version}.')
 
     for file in entry['latestFiles']:
         if not file['gameVersion'] or wow_version == file['gameVersion'][0]:
-            print(f'Therefore resolved {entry["name"]} version to compatible {file["displayName"]}.')
+            click.echo(f'Therefore resolved {entry["name"]} version to compatible {file["displayName"]}.')
             if 'alpha' in file['displayName'].lower() or 'alpha' in file['fileName'].lower():
                 state = AddonVersionState.ALPHA
             elif 'beta' in file['displayName'].lower() or 'beta' in file['fileName'].lower():
@@ -64,7 +65,7 @@ def resolve(entry: dict) -> Union[Tuple[str, AddonVersionState, str], None]:
                 state = AddonVersionState.RELEASE
             return file['displayName'], state, file['downloadUrl']
 
-    print('Unable to resolve addon version for this WoW version.')
+    click.echo(click.style('Unable to resolve addon version for this WoW version.', fg='red'))
 
 
 def download(addon_download_link: str) -> str:
@@ -75,17 +76,18 @@ def download(addon_download_link: str) -> str:
     archive_name = addon_download_link.split('/')[-1]
     file_path = os.path.join(tmp_dir, archive_name)
     if os.path.exists(file_path):
-        print(f'Found already downloaded file for {addon_download_link}.')
+        click.echo(f'Found already downloaded file for {addon_download_link}.')
     else:
-        print(f'Downloading {addon_download_link} ..')
+        click.echo(f'Downloading {addon_download_link} ..')
         urllib.request.urlretrieve(addon_download_link, file_path)
-    print(f'Done.')
+    click.echo(click.style('Done.', bold=True))
     return file_path
 
 
 def unpack(path: str) -> list:
     addons_dir = autodiscover_wow_addon_directory()
-    print(f'Unpacking {path} to {addons_dir} ..')
+    click.echo('Unpacking ' + click.style(path, underline=True)
+               + ' to ' + click.style(addons_dir) + '..')
 
     unpacked_dirs = []
     with zipfile.ZipFile(path, 'r') as zip_ref:
@@ -95,7 +97,7 @@ def unpack(path: str) -> list:
         unpacked_dirs = list(set(unpacked_dirs))
         zip_ref.extractall(addons_dir)
 
-    print(f'Done.')
+    click.echo(click.style('Done.', bold=True))
     return unpacked_dirs
 
 

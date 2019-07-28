@@ -1,6 +1,7 @@
 import os
 import shutil
 
+import click
 import yaml
 
 from core.utils import get_metadata_path, autodiscover_wow_addon_directory
@@ -21,11 +22,11 @@ def uninstall(name_to_uninstall: str) -> None:
                     break
 
     if not found:
-        print(f'{name_to_uninstall} is not installed.')
+        click.echo(f'{name_to_uninstall} is not installed.')
         return
 
     for dir_to_remove in v['dirs']:
-        print(f'Deleting {dir_to_remove} ..')
+        click.echo(f'Deleting {os.path.join(wow_addon_directory, dir_to_remove)} ..')
         shutil.rmtree(os.path.join(wow_addon_directory, dir_to_remove))
 
     with open(metadata_path, 'r') as f:
@@ -34,4 +35,4 @@ def uninstall(name_to_uninstall: str) -> None:
     with open(metadata_path, 'w') as f:
         yaml.dump(metadata, f, default_flow_style=False)
 
-    print(f'Uninstalled {name}.')
+    click.echo(f'Uninstalled {name}.')

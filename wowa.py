@@ -3,7 +3,7 @@ import click
 from core.install import install
 from core.list_installed import list_installed
 from core.uninstall import uninstall
-from core.utils import parse_name_version, get_metadata_path
+from core.utils import parse_name_version
 
 
 @click.group()
@@ -19,7 +19,8 @@ def install_command(addon_names):
         addon_names = [addon_names]
 
     for addon_name in addon_names:
-        click.echo(f'Installing {addon_name} (latest) ..')
+        click.echo()
+        click.echo('Installing ' + click.style(addon_name, fg='yellow') + ' (latest) ..')
         name, version = parse_name_version(addon_name)
         install(name, version)
 
@@ -32,8 +33,9 @@ def uninstall_command(addon_names):
     if not addon_names:
         addon_names = list_installed()
     for addon_name in addon_names:
-        click.echo(f'Uninstalling {addon_name} (latest) ..')
+        click.echo('Uninstalling ' + click.style(addon_name, fg='yellow') + ' (latest) ..')
         uninstall(addon_name)
+    click.echo(click.style('All uninstalled.', bold=True))
 
 
 @cli.command(name='upgrade')
@@ -47,7 +49,9 @@ def upgrade_command(addon_names):
 
 @cli.command(name='list')
 def list_command():
-    list_installed()
+    installed = list_installed()
+    for addon, addon_data in installed.items():
+        click.echo(click.style(addon, fg='yellow') + '==' + addon_data)
 
 
 @cli.command(name='version')

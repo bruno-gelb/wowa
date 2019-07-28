@@ -1,8 +1,8 @@
 import json
 from datetime import datetime
-from pprint import pprint
 from time import strptime, mktime
 
+import click
 import requests
 
 from core.settings import WOW_TWITCH_ID, INDEX_STALE_IN_MINUTES, PAGE_SIZE, INDEX_PATH
@@ -22,18 +22,18 @@ class Index(object):
             with open(INDEX_PATH, 'r') as f:
                 read = json.load(f)
         except FileNotFoundError:
-            print(f'Index is absent.')
+            click.echo(f'Index is absent.')
             return True
         else:
             diff = mktime(strptime(self.data['built_on'], self.date_format)) - \
                    mktime(strptime(read['built_on'], self.date_format))
             if diff >= INDEX_STALE_IN_MINUTES * 60:
-                print(f'Index is stale ({diff / 60} min old).')
+                click.echo(f'Index is stale ({diff / 60} min old).')
                 return True
         return False
 
     def build(self) -> None:
-        print('Building index ..')
+        click.echo('Building index ..')
 
         url = 'https://addons-ecs.forgesvc.net/api/v2/addon/search'
 
@@ -49,7 +49,7 @@ class Index(object):
             fetched = json.loads(response.text)
             if not fetched:
                 break
-            print(f'Found {len(fetched)} entities on page {page}, continuing ..')
+            click.echo(f'Found {len(fetched)} entities on page {page}, continuing ..')
             self.data['addons'] += fetched
             page += 1
 
@@ -58,7 +58,7 @@ class Index(object):
             json.dump(self.data, f)
 
         amount = len(self.data['addons'])
-        print(f'Index built, {amount} addons found.')
+        click.echo(f'Index built, {amount} addons found.')
 
     def read(self, index_file: str) -> None:
         with open(index_file, 'r') as f:
@@ -70,27 +70,30 @@ class Index(object):
 
         self.read(INDEX_PATH)
 
-        print(f'Searching for {name}=={version} ..')
+        click.echo(f'Searching for {name}=={version} ..')
 
         found = None
 
         for entry in self.data['addons']:
             if name.lower() == entry['name'].lower():
                 found = entry
-                print(f'Found direct match: {entry["name"]}')
+                click.echo(f'Found direct match: {entry["name"]}')
 
         if not found:
-            print('No direct matches.')
+            click.echo('No direct matches.')
 
             close_matches = []
             for entry in self.data['addons']:
                 if name.lower() in entry['name'].lower():
                     close_matches.append(entry['name'])
             if close_matches:
-                print('Maybe you meant one of these?')
-                pprint(close_matches)
+                click.echo(click.style('Maybe you meant one of these?', fg='green'))
+                styled_maches = [click.style('* ' + m, fg='yellow') for m in close_matches]
+                for m in styled_maches:
+                    click.echo(m)
             else:
-                print('No close matches either. Please check the name of addon on the website?')
+                click.echo(
+                    click.style('No close matches either. Please check the name of addon on the website?', fg='red'))
 
         return found
 
