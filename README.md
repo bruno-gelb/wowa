@@ -8,41 +8,41 @@ Install addon:
 ```
 wowa.py install recount
 ```
-Install specific version of addon:
+**TBI** Install specific version of addon:
 ```
 wowa.py install recount==8.2
 ```
-Install addons in bulk:
+**TBI** Install addons in bulk:
 ```
 wowa.py install -y addons.yaml
 ```
-Uninstall addon:
+**TBI** Uninstall addon:
 ```
 wowa.py uninstall recount
-```
-Upgrade all addons:
-```
-wowa.py upgrade
-```
-Upgrade specific addon:
-```
-wowa.py upgrade recount
 ```
 List installed addons:
 ```
 wowa.py list
 ```
-Show specific installed addon:
+**TBI** Show specific installed addon:
 ```
 wowa.py list recount
 ```
-Search for available to install addon versions:
+**TBI** Search for available to install addon versions:
 ```
 wowa.py search recount
 ```
-Show addon info (description, total downloads, ..):
+**TBI** Show addon info (description, total downloads, ..):
 ```
 wowa.py info recount
+```
+**TBI** Upgrade all addons:
+```
+wowa.py upgrade
+```
+**TBI** Upgrade specific addon:
+```
+wowa.py upgrade recount
 ```
 Show all available commands of the addon manager:
 ```
