@@ -39,14 +39,14 @@ wowa.py --version  # show addon manager version
 
 ### why not use other WoW CLI addon tools?
 
-|project|language|github stars|commits|last commit|forks|how exactly wowa is better|
-| ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
-| [kuhnertdm/wow-addon-updater](https://github.com/kuhnertdm/wow-addon-updater) | Python | 116 | 123 | 11 months ago | 38 | No ready-to-use binary provided for the end users. The tool can serve only as an updater (no other addon management), and the user has to manually search for http links and form the file (usability issues).  |
-| [layday/instawow](https://github.com/layday/instawow) | Python | 17 | 255 | 10 days ago | 2 | No ready-to-use binary provided for the end users. No search or info functions. Websocket server and SQL database are required to run the tool. Excessive things (like OS X menu plugin) are shipped with the tool. |
-| [zekesonxx/wow-cli](https://github.com/zekesonxx/wow-cli) | JavaScript | 12 | 26 | 4 years ago | 4 | Even the latest fork was dropped 2 years ago. Interface is lacking consistency and features. No ready-to-use binary provided for the end users. |
-| [wttw/wowaddon](https://github.com/wttw/wowaddon) | Go | 5 | 39 | 2 years ago | 2 | No ready-to-use binary provided for the end users. Was not tested with real WoW installation. |
-| [acdtrx/wowam](https://github.com/acdtrx/wowam) | JavaScript | 1 | 21 | 3 years ago | None | No ready-to-use binary provided for the end users. Unsupported. Only couple of commands implemented, no documentation or usability effort made. |
-| [qwezarty/wow-addon-manager](https://github.com/qwezarty/wow-addon-manager) | Python | 0 | 38 | 5 months ago | None| Dropped at the early stage of development (according to readme). No ready-to-use binary provided for the end users. |
+|project|language|github stars|commits|last commit|status|forks|how exactly wowa is better|
+| ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
+| [kuhnertdm/wow-addon-updater](https://github.com/kuhnertdm/wow-addon-updater) | Python | 116 | 123 | 11 months ago | unsupported | 38 | No ready-to-use binary provided for the end users. The tool can serve only as an updater (no other addon management), and the user has to manually search for http links and form the file (usability issues).  |
+| [layday/instawow](https://github.com/layday/instawow) | Python | 17 | 255 | 10 days ago | supported | 2 | No ready-to-use binary provided for the end users. No search or info functions. Websocket server and SQL database are required to run the tool. Excessive things (like OS X menu plugin) are shipped with the tool. |
+| [zekesonxx/wow-cli](https://github.com/zekesonxx/wow-cli) | JavaScript | 12 | 26 | 4 years ago | unsupported | 4 | Even the latest fork was dropped 2 years ago. Interface is lacking consistency and features. No ready-to-use binary provided for the end users. |
+| [wttw/wowaddon](https://github.com/wttw/wowaddon) | Go | 5 | 39 | 2 years ago | unsupported | 2 | No ready-to-use binary provided for the end users. Was not tested with real WoW installation. |
+| [acdtrx/wowam](https://github.com/acdtrx/wowam) | JavaScript | 1 | 21 | 3 years ago | unsupported | None | No ready-to-use binary provided for the end users. Only couple of commands implemented, no documentation or usability effort made. |
+| [qwezarty/wow-addon-manager](https://github.com/qwezarty/wow-addon-manager) | Python | 0 | 38 | 5 months ago | unsupported | None| Dropped at the early stage of development (according to readme). No ready-to-use binary provided for the end users. |
 
 ### contributing
 
