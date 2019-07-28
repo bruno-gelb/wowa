@@ -25,7 +25,7 @@ def install(name: str, version: str) -> None:
                 installed_dirs = unpack(downloaded)
                 store_install_metadata(
                     installed_name,
-                    f'=={installed_version}',
+                    installed_version,
                     installed_dirs,
                     installed_state
                 )
@@ -88,7 +88,7 @@ def store_install_metadata(name: str, version: str, dirs: list, state: AddonVers
     metadata = get_path_to_metadata()
 
     data = {name: {
-        'version': version,
+        'version': f'{version}',
         'dirs': dirs,
         'state': str(state)
     }}
