@@ -14,7 +14,7 @@ wowa.py install recount==8.2
 ```
 Install addons in bulk:
 ```
-wowa.py install -f addons.yaml
+wowa.py install -y addons.yaml
 ```
 Uninstall addon:
 ```
@@ -30,11 +30,11 @@ wowa.py upgrade recount
 ```
 List installed addons:
 ```
-wowa.py installed
+wowa.py list
 ```
-Show info about specific installed addon:
+Show specific installed addon:
 ```
-wowa.py installed recount
+wowa.py list recount
 ```
 Search for available to install addon versions:
 ```

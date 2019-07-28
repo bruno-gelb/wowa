@@ -30,9 +30,8 @@ def upgrade(addon_name):
 
 
 @cli.command(name='list')
-@click.option('-i', '--installed', is_flag=True, default=False)
-def list_addons(installed):
-    print(installed)
+def list_installed():
+    pass
 
 
 @cli.command()
