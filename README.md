@@ -9,10 +9,10 @@ wowa = World of Warcraft console Addon manager
 * lightweight and fast. Index and downloads are cached
 * well thought-out colorful interface
 * requires no authorization wheresoever
-* *(soon to be supported)* WoW installation path and version autodetect
-* *(soon to be supported)* Windows installation binary ( `*.exe` / `*.msi` )
-* *(soon to be supported)* multiple addon providers ([wowinterface.com](https://wowinterface.com), [wowmatrix.com](https://wowmatrix.com))
-* *(later to be supported)* OS X / Linux installation binaries
+* *(soon to be implemented)* WoW installation path and version autodetect
+* *(soon to be implemented)* Windows ready-to-use installation binary ( `*.exe` / `*.msi` )
+* *(soon to be implemented)* multiple addon providers ([wowinterface.com](https://wowinterface.com), [wowmatrix.com](https://wowmatrix.com))
+* *(later to be implemented)* OS X / Linux ready-to-use installation binaries
 ### usage
 
 ```
