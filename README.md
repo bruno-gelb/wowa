@@ -11,9 +11,9 @@ World of Warcraft console addon manager
 * well thought-out colorful interface
 * requires no authorization wheresoever
 * *(soon to be supported)* WoW installation path and version autodetect
-* *(soon to be supported)* no installation required, just place the dir with `.exe` file in your PATH
+* *(soon to be supported)* Windows installation binary ( `*.exe` / `*.msi` )
 * *(soon to be supported)* multiple addon providers ([wowinterface.com](https://wowinterface.com), [wowmatrix.com](https://wowmatrix.com))
-
+* *(later to be supported)* OS X / Linux installation binaries
 ### usage
 
 Install addon:
