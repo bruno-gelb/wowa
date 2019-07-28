@@ -78,7 +78,7 @@ It is merely a shy attempt to defend my own solution. :)
 
 If you know some tool that should be added in this sheet, please contact me via issue / pull request!
 
-|project|language|github stars|commits|last commit|forks|why it can't be a replacement for wowa|
+|project|language|github stars|commits|last commit|forks|how exactly wowa is better|
 | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
 | [kuhnertdm/wow-addon-updater](https://github.com/kuhnertdm/wow-addon-updater) | Python | 116 | 123 | 11 months ago | 38 | No ready-to-use binary provided for the end users. The tool can serve only as an updater (no other addon managment), and the user has to manually search for http links and form the file (usability issues).  |
 | [zekesonxx/wow-cli](https://github.com/zekesonxx/wow-cli) | JavaScript | 12 | 26 | 4 years ago | 4 | Even the latest fork was dropped 2 years ago. Interface is lacking consistency and features. No ready-to-use binary provided for the end users. |
