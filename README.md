@@ -48,3 +48,7 @@ If you know some tool that should be added in this sheet, please contact me via 
 | [wttw/wowaddon](https://github.com/wttw/wowaddon) | Go | 5 | 39 | 2 years ago | 2 | No ready-to-use binary provided for the end users. Was not tested with real WoW installation. |
 | [acdtrx/wowam](https://github.com/acdtrx/wowam) | JavaScript | 1 | 21 | 3 years ago | None | No ready-to-use binary provided for the end users. Unsupported. Only couple of command implemented, no documentation or usability effot made. |
 | [qwezarty/wow-addon-manager](https://github.com/qwezarty/wow-addon-manager) | Python | 0 | 38 | 5 months ago | None| Dropped at the early stage of development (according to readme). No ready-to-use binary provided for the end users. |
+
+### contributing
+
+You are welcome to contribute: [contributing guide](CONTRIBUTING.md).
