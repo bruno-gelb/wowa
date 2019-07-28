@@ -2,6 +2,7 @@ import click
 
 from core.install import install
 from core.list_installed import list_installed
+from core.uninstall import uninstall
 from core.utils import parse_name_version
 
 
@@ -23,8 +24,7 @@ def install_command(addon_name):
 @click.argument('addon_name')
 def uninstall_command(addon_name):
     click.echo(f'Uninstalling {addon_name} (latest) ..')
-    addon_version = '5.8.2'
-    click.echo(f'Uninstalled {addon_name}=={addon_version}.')
+    uninstall(addon_name)
 
 
 @cli.command(name='upgrade')
