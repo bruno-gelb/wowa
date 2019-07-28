@@ -2,17 +2,16 @@ import os
 
 import yaml
 
-from core.utils import autodiscover_wow_addon_directory
+from core.utils import get_path_to_config
 
 
 def list_installed() -> None:
-    wow_addon_directory = autodiscover_wow_addon_directory()
-    yaml_path = os.path.join(wow_addon_directory, 'wowa.yaml')
+    config = get_path_to_config()
 
-    if not os.path.exists(yaml_path):
+    if not os.path.exists(config):
         return
 
-    with open(yaml_path, 'r') as f:
+    with open(config, 'r') as f:
         for name, v in yaml.load(f, Loader=yaml.FullLoader).items():
             version = v['version']
             print(f'{name}{version}')

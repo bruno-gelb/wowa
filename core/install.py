@@ -6,7 +6,7 @@ from typing import Union, Tuple
 import yaml
 
 from core.index import index
-from core.utils import autodiscover_wow_addon_directory, autodiscover_wow_version
+from core.utils import autodiscover_wow_addon_directory, autodiscover_wow_version, get_path_to_config
 
 
 def install(name: str, version: str) -> None:
@@ -65,13 +65,12 @@ def unpack(path: str) -> None:
 
 
 def remember(name: str, version: str) -> None:
-    wow_addon_directory = autodiscover_wow_addon_directory()
-    yaml_path = os.path.join(wow_addon_directory, 'wowa.yaml')
+    config = get_path_to_config()
 
     data = {name: {'version': version}}
-    if os.path.exists(yaml_path):
-        with open(yaml_path, 'r') as f:
+    if os.path.exists(config):
+        with open(config, 'r') as f:
             data.update(yaml.load(f))
 
-    with open(yaml_path, 'w') as f:
+    with open(config, 'w') as f:
         yaml.dump(data, f, default_flow_style=False)
