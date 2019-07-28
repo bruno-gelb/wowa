@@ -1,10 +1,11 @@
 import json
 from datetime import datetime
+from pprint import pprint
 from time import strptime, mktime
 
 import requests
 
-from core.settings import WOW_TWITCH_ID, WOW_VERSION, INDEX_STALE_IN_MINUTES, PAGE_SIZE, INDEX_PATH
+from core.settings import WOW_TWITCH_ID, INDEX_STALE_IN_MINUTES, PAGE_SIZE, INDEX_PATH
 
 
 class Index(object):
@@ -38,7 +39,7 @@ class Index(object):
 
         params = {
             'gameId': WOW_TWITCH_ID,
-            'gameVersion': WOW_VERSION,
+            # 'gameVersion': WOW_VERSION,
             'pageSize': PAGE_SIZE,
             'sort': 0
         }
@@ -58,7 +59,7 @@ class Index(object):
             json.dump(self.data, f)
 
         amount = len(self.data['addons'])
-        print(f'Index built, {amount} addons found for this WoW version.')
+        print(f'Index built, {amount} addons found.')
 
     def read(self, index_file: str) -> None:
         with open(index_file, 'r') as f:
@@ -72,9 +73,25 @@ class Index(object):
 
         print(f'Searching for {name}=={version} ..')
 
+        found = None
+
         for entry in self.data['addons']:
             if name.lower() == entry['name'].lower():
                 found = entry
+                print(f'Found direct match: {entry["name"]}')
+
+        if not found:
+            print('No direct matches.')
+
+            close_matches = []
+            for entry in self.data['addons']:
+                if name.lower() in entry['name'].lower():
+                    close_matches.append(entry['name'])
+            if close_matches:
+                print('Maybe you meant one of these?')
+                pprint(close_matches)
+            else:
+                print('No close matches either. Please check the name of addon on the website?')
 
         return found
 

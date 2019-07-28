@@ -16,8 +16,7 @@ def cli():
 def install_command(addon_name):
     click.echo(f'Installing {addon_name} (latest) ..')
     name, version = parse_name_version(addon_name)
-    installed_name, installed_version = install(name, version)
-    click.echo(f'Installed {installed_name}=={installed_version}. ')
+    install(name, version)
 
 
 @cli.command(name='uninstall')
