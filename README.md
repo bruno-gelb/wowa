@@ -8,11 +8,15 @@ Install addon:
 ```
 wowa.py install recount
 ```
+**TBI** Install addons in bulk:
+```
+wowa.py install recount tomtom auctioneer
+```
 **TBI** Install specific version of addon:
 ```
 wowa.py install recount==8.2
 ```
-**TBI** Install addons in bulk:
+**TBI** Install addons from file:
 ```
 wowa.py install -y addons.yaml
 ```
