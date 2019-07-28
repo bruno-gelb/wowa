@@ -3,7 +3,7 @@ import click
 from core.install import install
 from core.list_installed import list_installed
 from core.uninstall import uninstall
-from core.utils import parse_name_version
+from core.utils import parse_name_version, get_metadata_path
 
 
 @click.group()
@@ -13,7 +13,7 @@ def cli():
 
 
 @cli.command(name='install')
-@click.argument('addon_names', nargs=-1)
+@click.argument('addon_names', nargs=-1, required=True)
 def install_command(addon_names):
     if isinstance(addon_names, str):
         addon_names = [addon_names]
@@ -25,10 +25,12 @@ def install_command(addon_names):
 
 
 @cli.command(name='uninstall')
-@click.argument('addon_names', nargs=-1)
+@click.argument('addon_names', nargs=-1, required=False)
 def uninstall_command(addon_names):
     if isinstance(addon_names, str):
         addon_names = [addon_names]
+    if not addon_names:
+        addon_names = list_installed()
     for addon_name in addon_names:
         click.echo(f'Uninstalling {addon_name} (latest) ..')
         uninstall(addon_name)

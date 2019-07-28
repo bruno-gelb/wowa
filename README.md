@@ -2,6 +2,17 @@
 
 World of Warcraft console addon manager
 
+### features
+
+* install, uninstall, upgrade [Twitch (CurseForge) addons](https://www.curseforge.com/wow/addons) in bulk from command line or from file
+* lightweight and fast. Index and downloads are cached
+* well thought-out interface
+* requires no authorization wheresoever
+* *(soon to be supported)* WoW installation path and version autodetect
+* *(soon to be supported)* no installation required, just run the `.exe` file
+* *(soon to be supported)* colorful output
+* *(soon to be supported)* multiple addon providers ([wowinterface.com](https://wowinterface.com), [wowmatrix.com](https://wowmatrix.com))
+
 ### usage
 
 Install addon:
@@ -23,6 +34,10 @@ wowa.py install -y addons.yaml
 Uninstall addon:
 ```
 wowa.py uninstall recount
+```
+Uninstall all addons:
+```
+wowa.py uninstall
 ```
 List installed addons:
 ```
